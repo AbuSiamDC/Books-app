@@ -40,7 +40,12 @@ const Books = () => {
 
         {books.map(book=>( // If we use map then we also need to provide a unique key because Each child in a list should have a unique "key"
           <div className="book" key={book.id}> 
-            {book.cover && <img src={book.cover} alt="Book Cover" />} 
+            {console.log("book . cover")}
+            {console.log(book.cover)}
+            {/* {book.cover && <img src={"../../public/upload/"+book.cover} alt="Book Cover" />} */}
+            {/* {book.cover && <img src={"../../public/upload/"+book.cover} alt="Book Cover" />} */}
+            {book.cover && <img src={"/upload/"+book.cover} alt="Book Cover" />}
+            {/* {<img src={"../../public/upload/"+book.cover} alt="Book Cover" />}  */}
             <h2>{book.title}</h2>
             <p>{book.desc}</p>
             <span>{book.price}</span>

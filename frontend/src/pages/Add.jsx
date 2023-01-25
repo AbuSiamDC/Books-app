@@ -37,12 +37,20 @@ const Add = () => {
     }
   };
 
-  const handleClick = async (event) => {
-    event.preventDefault()
+ const handleImgUpload = async (event) => {
+  event.preventDefault()
     const imgurl = await upload()
     console.log("image url");
     console.log(imgurl);
     setInput((prev) => ({...prev, cover:imgurl}))
+    console.log("input inside img upload");
+    console.log(input);
+ }
+
+  const handleClick = async (event) => {
+    event.preventDefault()
+    console.log("input inside add ");
+    console.log(input);
     try {
       await axios.post("http://localhost:8800/books", input)
       navigate("/")
@@ -61,6 +69,7 @@ const Add = () => {
       {/* <input type="text" placeholder="cover" onChange={handleChange} name="cover"/> */}
       {/* <input type="file" placeholder="cover" onChange={handleChange} name="cover"/> */}
       <input type="file" placeholder="cover" onChange={event => setFile(event.target.files[0])} name="cover"/>
+      <button className="uploadimg" onClick={handleImgUpload}>Upload Image</button>
       <button className="formButton" onClick={handleClick}>ADD</button>
     </div>
   );
